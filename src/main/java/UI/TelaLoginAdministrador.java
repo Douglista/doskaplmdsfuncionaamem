@@ -35,6 +35,7 @@ public class TelaLoginAdministrador extends javax.swing.JFrame {
         logarButton = new javax.swing.JButton();
         senhaPasswordField = new javax.swing.JPasswordField();
         logarButtonLabel = new javax.swing.JLabel();
+        voltar = new javax.swing.JButton();
         telaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,6 +68,17 @@ public class TelaLoginAdministrador extends javax.swing.JFrame {
 
         logarButtonLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logarButtonImage.png"))); // NOI18N
         getContentPane().add(logarButtonLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 570, -1, -1));
+
+        voltar.setBackground(new java.awt.Color(0, 51, 102));
+        voltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        voltar.setForeground(new java.awt.Color(255, 255, 255));
+        voltar.setText("voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 670, -1, -1));
 
         telaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/telaLoginAdministradorImage.png"))); // NOI18N
         getContentPane().add(telaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -103,6 +115,12 @@ public class TelaLoginAdministrador extends javax.swing.JFrame {
     private void senhaPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaPasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaPasswordFieldActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        var telaLoginFuncionaAmem = new TelaLoginFuncionaAmem();
+        telaLoginFuncionaAmem.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,5 +163,6 @@ public class TelaLoginAdministrador extends javax.swing.JFrame {
     private javax.swing.JTextField loginTextField;
     private javax.swing.JPasswordField senhaPasswordField;
     private javax.swing.JLabel telaLabel;
+    private javax.swing.JButton voltar;
     // End of variables declaration//GEN-END:variables
 }

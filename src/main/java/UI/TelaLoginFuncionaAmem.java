@@ -5,6 +5,7 @@
 package UI;
 import Connection_MySQL_UsuarioDAO.UsuarioDAO;
 import Connection_Usuarios.Usuario;
+import Jogo.Jogo;
 import static javax.swing.JOptionPane.*;
 
 /**
@@ -108,9 +109,13 @@ public class TelaLoginFuncionaAmem extends javax.swing.JFrame {
             var u = new Usuario(ra, senha);
             var dao = new UsuarioDAO();
             if (dao.existe(u)){
-                var telaregras1 = new TelaRegras1();
+                var telaregras1 = new TelaRegras1(ra);
+                
                 telaregras1.setVisible(true);
                 dispose();
+                
+                var jogo = new Jogo();
+                jogo.setRa(ra);
             }
             else{
                 showMessageDialog(null, "Usuário/senha inválido");

@@ -6,7 +6,6 @@ package UI;
 
 
 
-import Connection_MySQL.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -30,7 +29,7 @@ public class TelaGabarito extends javax.swing.JFrame {
             Statement statement = conn.createStatement();
             String SQL = "select id, perguntas, respostas from questoes";
             ResultSet resultQuery = statement.executeQuery(SQL);
-            int pos =1;
+            int pos =0;
             while (resultQuery.next()) {
                 gabarito[pos] [0] = resultQuery.getNString("id");
                 gabarito[pos] [1] = resultQuery.getNString("perguntas");
@@ -46,6 +45,7 @@ public class TelaGabarito extends javax.swing.JFrame {
              e.printStackTrace();
         }
         initComponents();
+        setLocationRelativeTo(null);
         tabelaTable.setModel(new javax.swing.table.DefaultTableModel(gabarito, titulo));
         
     }
@@ -61,6 +61,7 @@ public class TelaGabarito extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         telaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -105,11 +106,25 @@ public class TelaGabarito extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 650, 310));
 
+        jButton1.setText("Voltar ao início");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 540, 210, 50));
+
         telaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doska appeared (5).png"))); // NOI18N
-        getContentPane().add(telaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 950));
+        getContentPane().add(telaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 950));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        var telaLoginFuncionaAmem = new TelaLoginFuncionaAmem();
+        telaLoginFuncionaAmem.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,6 +162,7 @@ public class TelaGabarito extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaTable;
     private javax.swing.JLabel telaLabel;

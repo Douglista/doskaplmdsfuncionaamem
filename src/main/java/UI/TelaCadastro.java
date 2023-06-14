@@ -4,7 +4,9 @@
  */
 package UI;
 
+import Connection_MySQL_RespostasDAO.RespostasDAO;
 import Connection_MySQL_UsuarioDAO.UsuarioDAO;
+import Connection_Respostas.Respostas;
 import Connection_Usuarios.Usuario;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -80,7 +82,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         getContentPane().add(senhaPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 600, 40));
 
         voltarButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        voltarButton.setForeground(new java.awt.Color(255, 255, 255));
         voltarButton.setText("voltar");
+        voltarButton.setContentAreaFilled(false);
         voltarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarButtonActionPerformed(evt);
@@ -111,18 +115,23 @@ public class TelaCadastro extends javax.swing.JFrame {
             String senha = new String(senhaPasswordField.getPassword());
             var u = new Usuario(ra, nome, email, senha);
             var dao = new UsuarioDAO();
+            String pontuacao = "0";
+            //var r = new Respostas(ra, nome, pontuacao);
+            //var rDAO = new RespostasDAO();
             //colocar aqui o código para verificar se todos os campos estão preenchidos!
             if(dao.verificacao(u)){
                  showMessageDialog(null, "Usuário já cadastrado.");
-            }
-            else{
+            //}else if(rDAO.verificacao(r)){
+                //showMessageDialog(null, "Usuário já cadastrado.");
+            } else {
                 var telaLogin = new TelaLoginFuncionaAmem();
                 telaLogin.setVisible(true);
                 dispose();
             }
-            dao.cadastrar(u);  
-
-
+            dao.cadastrar(u); 
+            //rDAO.cadastrar(r);
+            
+            
         }
         catch(Exception e){
              showMessageDialog(null, "Falha técnica. Tente novamente mais tarde");

@@ -4,18 +4,25 @@
  */
 package UI;
 
+import Jogo.Jogo;
+
 /**
  *
  * @author 23.01425-3
  */
 public class TelaGameOver extends javax.swing.JFrame {
 
+     Jogo jogo;
+     String ra;
     /**
      * Creates new form TelaGameOver
      */
-    public TelaGameOver() {
+     public TelaGameOver(){}
+    public TelaGameOver(Jogo jogo) {
         initComponents();
         setLocationRelativeTo(null);
+        this.ra = jogo.getRa();
+        this.jogo = jogo;
     }
 
     /**
@@ -27,22 +34,22 @@ public class TelaGameOver extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        irRankingButton = new javax.swing.JButton();
+        irPontuacaoButton = new javax.swing.JButton();
         irRankingButtonLabel = new javax.swing.JLabel();
         telaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        irRankingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doska appeared (4).png"))); // NOI18N
-        irRankingButton.setBorderPainted(false);
-        irRankingButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        irRankingButton.addActionListener(new java.awt.event.ActionListener() {
+        irPontuacaoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/VerSuaPontua.jpg"))); // NOI18N
+        irPontuacaoButton.setBorderPainted(false);
+        irPontuacaoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        irPontuacaoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                irRankingButtonActionPerformed(evt);
+                irPontuacaoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(irRankingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 230, 50));
+        getContentPane().add(irPontuacaoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 230, 40));
 
         irRankingButtonLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doska appeared (4).png"))); // NOI18N
         getContentPane().add(irRankingButtonLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, -1, -1));
@@ -53,11 +60,12 @@ public class TelaGameOver extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void irRankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irRankingButtonActionPerformed
-        var telaRanking = new TelaRanking();
-        telaRanking.setVisible(true);
+    private void irPontuacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irPontuacaoButtonActionPerformed
+
+        var telaPontuacao = new TelaPontuacao(Integer.parseInt(jogo.getPontuacao()));
+        telaPontuacao.setVisible(true);
         dispose();
-    }//GEN-LAST:event_irRankingButtonActionPerformed
+    }//GEN-LAST:event_irPontuacaoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,7 +103,7 @@ public class TelaGameOver extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton irRankingButton;
+    private javax.swing.JButton irPontuacaoButton;
     private javax.swing.JLabel irRankingButtonLabel;
     private javax.swing.JLabel telaLabel;
     // End of variables declaration//GEN-END:variables

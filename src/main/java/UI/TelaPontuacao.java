@@ -3,22 +3,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+import Connection_Respostas.Respostas;
+import Connection_MySQL_RespostasDAO.RespostasDAO;
+import Jogo.Jogo;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author 23.01425-3
  */
 public class TelaPontuacao extends javax.swing.JFrame {
+    
+    Jogo jogo;
+    String ra;
 
-    /**
-     * Creates new form telaPontuacao
-     */
-    public TelaPontuacao() {
+
+    public TelaPontuacao(){
+    }
+    
+    public TelaPontuacao(int pontuacao) {
         initComponents();
         setLocationRelativeTo(null);
-        
-    }
+           String p = Integer.toString(pontuacao);
+           pontuacaoJogadorLabel.setText(p);
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +63,8 @@ public class TelaPontuacao extends javax.swing.JFrame {
         pontuacaoJogadorLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         pontuacaoJogadorLabel.setForeground(new java.awt.Color(0, 0, 102));
         pontuacaoJogadorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(pontuacaoJogadorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 160, 60));
+        pontuacaoJogadorLabel.setText(" ");
+        getContentPane().add(pontuacaoJogadorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 200, 60));
 
         telaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doska appeared (2).png"))); // NOI18N
         getContentPane().add(telaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -73,7 +89,7 @@ public class TelaPontuacao extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -93,7 +109,8 @@ public class TelaPontuacao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPontuacao().setVisible(true);
+                var telaPontuacao = new TelaPontuacao();
+                telaPontuacao.setVisible(true);
             }
         });
     }

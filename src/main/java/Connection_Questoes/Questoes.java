@@ -11,8 +11,7 @@ public class Questoes {
     private String perguntas;
     private String respostas;
     private String idBusca;
-
-
+    
     public Questoes(String id, String alternativaA, String alternativaB, String alternativaC, String alternativaD, String perguntas, String respostas, String idBusca1) {
         this.id = id;
         this.alternativaA = alternativaA;
@@ -90,5 +89,4 @@ public class Questoes {
     public void setIdBusca(String idBusca1) {
         this.idBusca = idBusca1;
     }
-
 }

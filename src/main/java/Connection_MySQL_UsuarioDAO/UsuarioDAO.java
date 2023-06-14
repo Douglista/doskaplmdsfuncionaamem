@@ -1,6 +1,6 @@
 package Connection_MySQL_UsuarioDAO;
 
-import Connection_MySQL.ConnectionFactory;
+import UI.ConnectionFactory;
 import Connection_Usuarios.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -70,13 +70,13 @@ public class UsuarioDAO {
         StringBuilder sb = new StringBuilder("");
         
         while(rs.next()){
-            int ra = rs.getInt("Ra");
+            String ra = rs.getString("Ra");
             String nome = rs.getString("Nome");
             String email = rs.getString("Email");
             String senha = rs.getString("Senha");
             sb.append(
                  String.format(
-                            "Ra:%d, Nome:%s, Email:%s, Senha:%s",
+                            "Ra:%s, Nome:%s, Email:%s, Senha:%s",
                             ra, nome, email, senha
                     )
                 ).append("\n");

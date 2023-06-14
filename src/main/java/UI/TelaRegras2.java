@@ -13,9 +13,12 @@ public class TelaRegras2 extends javax.swing.JFrame {
     /**
      * Creates new form TelaRegras1
      */
-    public TelaRegras2() {
+    String ra;
+    public TelaRegras2(){}
+    public TelaRegras2(String ra) {
         initComponents();
         setLocationRelativeTo(null);
+        this.ra = ra;
     }
 
     /**
@@ -54,7 +57,7 @@ public class TelaRegras2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void avancarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avancarButtonActionPerformed
-        var telaJogo = new TelaJogo();
+        var telaJogo = new TelaJogo(ra);
         telaJogo.setVisible(true);
         dispose();
     }//GEN-LAST:event_avancarButtonActionPerformed

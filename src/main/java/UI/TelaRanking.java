@@ -1,9 +1,7 @@
 package UI;
 
-import Connection_MySQL.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 public class TelaRanking extends javax.swing.JFrame {
 
@@ -12,15 +10,15 @@ public class TelaRanking extends javax.swing.JFrame {
         String [] titulo = {"Posição", "RA", "Nome", "Pontuação"};
         try(Connection conn = ConnectionFactory.getConnection();){
             Statement statement = conn.createStatement();
-            String SQL = "select * from Respostas order by pontuacao ASC limit 15";
-            ResultSet resultQuery = statement.executeQuery(SQL);
+            String sql = "select * from respostas order by pontuacao desc";
+            ResultSet resultQuery = statement.executeQuery(sql);
             String [] top15 = new String [15];
-            int pos = 1;
+            int pos = 0;
             while (resultQuery.next()){
-                usuario[pos] [0] = Integer.toString(pos)+ "º";
+                usuario[pos] [0] = Integer.toString(pos+1)+ "º";
                 usuario[pos] [1] = resultQuery.getNString("ra");
                 usuario[pos] [2] = resultQuery.getNString("nome");
-                usuario[pos] [3] = resultQuery.getNString("pontuacao");
+                usuario[pos] [3] = Integer.toString(resultQuery.getInt("pontuacao"));
                 pos = pos +1;
             }         
             statement.close();
@@ -39,6 +37,7 @@ public class TelaRanking extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -87,13 +86,28 @@ public class TelaRanking extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 800, 330));
 
+        jButton1.setText("Ver Gabarito");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 600, 120, 40));
+
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/doska appeared (7).png"))); // NOI18N
+        jLabel1.setText("DDd");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        var telaGabarito = new TelaGabarito();
+        telaGabarito.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
        
@@ -124,6 +138,7 @@ public class TelaRanking extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

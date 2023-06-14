@@ -1,15 +1,35 @@
 package Connection_Respostas;
 
 public class Respostas {
-    private int ra;
+    private String ra;
     private String nome;
     private int pontuacao;
+    
+    //construtores:
 
-    public int getRa() {
+    public Respostas(String ra, String nome, int pontuacao) {
+        this.ra = ra;
+        this.nome = nome;
+        this.pontuacao = pontuacao;
+    }
+
+    public Respostas(String ra, int pontuacao) {
+        this.ra = ra;
+        this.pontuacao = pontuacao;
+    }
+    
+    
+    
+    public Respostas(String ra) {
+        this.ra = ra;
+    }
+
+    //getters and setters:
+    public String getRa() {
         return ra;
     }
 
-    public void setRa(int ra) {
+    public void setRa(String ra) {
         this.ra = ra;
     }
 
